@@ -1,0 +1,490 @@
+/* Общие переменные и базовые стили */
+:root {
+  --bg-color: #e9f8fb;
+  --bg-gradient-top: #d2f0ff;
+  --bg-gradient-bottom: #f4fbff;
+  --card-bg: #ffffff;
+  --accent-color: #00a6b3;
+  --accent-soft: rgba(0, 166, 179, 0.08);
+  --accent-strong: rgba(0, 166, 179, 0.18);
+  --text-main: #163043;
+  --text-muted: #4f6b7a;
+  --border-soft: rgba(0, 0, 0, 0.06);
+  --shadow-soft: 0 12px 30px rgba(0, 0, 0, 0.08);
+  --radius-lg: 18px;
+  --radius-md: 12px;
+  --radius-pill: 999px;
+}
+
+/* Фон: мягкий бирюзовый градиент */
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  background: radial-gradient(circle at top, var(--bg-gradient-top), #ffffff),
+    linear-gradient(to bottom, var(--bg-gradient-top), var(--bg-gradient-bottom));
+  color: var(--text-main);
+}
+
+/* Корневой контейнер сайта */
+.site-root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Шапка */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04);
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.site-header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.site-logo-block {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.site-logo-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 25% 20%,
+    #ffffff,
+    var(--accent-color)
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 18px;
+  box-shadow: 0 8px 22px rgba(0, 166, 179, 0.4);
+}
+
+.site-title {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.site-subtitle {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* Главное меню сверху */
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: flex-end;
+}
+
+.site-nav-link {
+  border: none;
+  border-radius: var(--radius-pill);
+  padding: 6px 12px;
+  font-size: 13px;
+  cursor: pointer;
+  background: transparent;
+  color: var(--text-muted);
+  transition: background 0.15s ease, color 0.15s ease, transform 0.1s ease;
+  white-space: nowrap;
+}
+
+.site-nav-link:hover {
+  background: var(--accent-soft);
+  color: var(--accent-color);
+  transform: translateY(-1px);
+}
+
+/* Основной layout: две колонки */
+.site-layout {
+  max-width: 1200px;
+  margin: 16px auto 24px;
+  padding: 0 16px 24px;
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(260px, 1.4fr);
+  gap: 16px;
+}
+
+/* Левая колонка */
+.site-main {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Правая колонка */
+.site-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Карточки / секции */
+.card,
+.site-section {
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  padding: 16px 18px;
+  border: 1px solid var(--border-soft);
+}
+
+.site-section h1,
+.site-section h2 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.site-section h1 {
+  font-size: 22px;
+}
+
+.site-section h2 {
+  font-size: 18px;
+}
+
+.site-section p {
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+/* Дата обновления */
+.site-update-date {
+  font-size: 13px;
+  color: var(--text-muted);
+  background: var(--accent-soft);
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+/* Таблички */
+.site-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.site-table th,
+.site-table td {
+  border: 1px solid var(--border-soft);
+  padding: 6px 8px;
+}
+
+.site-table th {
+  background: #f5fafc;
+  text-align: left;
+}
+
+/* Платёжные блоки */
+.pay-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 14px;
+  margin-top: 10px;
+}
+
+.pay-block {
+  background: #fffdf7;
+  border-radius: var(--radius-md);
+}
+
+.rekv-box {
+  font-size: 14px;
+  background: #fff9e6;
+  border-radius: 10px;
+  padding: 8px 10px;
+  margin-bottom: 8px;
+  border: 1px dashed #f0c76d;
+}
+
+.qr-placeholder {
+  background: repeating-linear-gradient(
+    45deg,
+    #f7f7f7,
+    #f7f7f7 6px,
+    #e9e9e9 6px,
+    #e9e9e9 12px
+  );
+  border-radius: 10px;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+/* Новости */
+.news-date {
+  font-weight: 600;
+  color: var(--accent-color);
+}
+
+/* Календарь */
+.calendar-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.calendar-month-label {
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.calendar-nav-btn {
+  border-radius: var(--radius-pill);
+}
+
+.calendar-today-btn {
+  margin-left: auto;
+}
+
+.calendar-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 12px;
+  overflow: hidden;
+  font-size: 13px;
+  background: #ffffff;
+}
+
+.calendar-table thead {
+  background: #f0fbff;
+}
+
+.calendar-table th,
+.calendar-table td {
+  padding: 6px 4px;
+  text-align: center;
+  border: 1px solid #e3edf3;
+}
+
+.calendar-cell {
+  height: 28px;
+}
+
+.calendar-cell-other {
+  color: #b0bcc3;
+  background: #fafbfc;
+}
+
+.calendar-cell-today {
+  background: rgba(0, 166, 179, 0.08);
+  border: 1px solid rgba(0, 166, 179, 0.5);
+  border-radius: 8px;
+}
+
+/* Личные кабинеты */
+.cabinet-tab {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.current-role-banner {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: var(--radius-pill);
+  background: var(--accent-soft);
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+/* Чат */
+.chat-card {
+  max-height: 320px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  max-height: 260px;
+  padding-right: 4px;
+}
+
+.chat-message-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.chat-message-body {
+  background: #f5fafc;
+  border-radius: 12px;
+  padding: 6px 8px;
+  flex: 1;
+}
+
+.chat-message-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  margin-bottom: 2px;
+}
+
+.chat-author {
+  font-weight: 600;
+}
+
+.chat-time {
+  color: var(--text-muted);
+}
+
+.chat-text {
+  font-size: 14px;
+}
+
+/* Кнопки звонков */
+.calls-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+/* Галерея */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.gallery-item {
+  background: linear-gradient(135deg, #f2fbff, #e8f5ff);
+  border-radius: 12px;
+  padding: 12px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+/* Полезные ссылки */
+.links-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.links-list li {
+  margin-bottom: 4px;
+}
+
+/* Боковая колонка */
+.side-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.side-link {
+  border: none;
+  background: transparent;
+  text-align: left;
+  width: 100%;
+  padding: 4px 0;
+  font-size: 14px;
+  cursor: pointer;
+  color: var(--text-muted);
+  border-radius: 6px;
+}
+
+.side-link:hover {
+  background: var(--accent-soft);
+  color: var(--accent-color);
+}
+
+/* Мелкий текст */
+.small {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* Футер */
+.site-footer {
+  margin-top: auto;
+  padding: 12px 16px 18px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* Адаптив под планшет/телефон */
+@media (max-width: 900px) {
+  .site-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .site-sidebar {
+    order: -1;
+  }
+
+  .site-header-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .site-nav {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 600px) {
+  .site-header-inner {
+    padding: 10px 12px;
+  }
+
+  .site-layout {
+    padding: 0 10px 16px;
+  }
+
+  .card,
+  .site-section {
+    padding: 12px 12px;
+  }
+
+  .site-section h1 {
+    font-size: 19px;
+  }
+
+  .site-section h2 {
+    font-size: 17px;
+  }
+
+  .site-section p,
+  .site-table {
+    font-size: 14px;
+  }
+}
